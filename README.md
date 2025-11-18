@@ -1,1 +1,63 @@
-# powerplant-api
+# PowerPlant-API
+
+## The project
+
+### In short
+Calculate how much power each of a multitude of different [powerplants](https://en.wikipedia.org/wiki/Power_station) need to produce (a.k.a. the production-plan) when the [load](https://en.wikipedia.org/wiki/Load_profile) is given and taking into account the cost of the underlying energy sources (gas,  kerosine) and the Pmin and Pmax of each powerplant.
+
+## Installation
+
+1. **Create the virtual environment**
+
+   ```bash
+   python3 -m venv venv
+   ```
+
+2. **Activate the virtual environment**
+
+   ```bash
+   source venv/bin/activate
+   ```
+
+3. **Install dependencies**
+
+   pyproject.toml -> contains the project dependencies.
+
+   ```bash
+   python -m pip install --upgrade pip
+   pip install --upgrade setuptools
+   pip install --group all --upgrade
+   ```
+
+
+## Run App
+
+### Local
+
+   ```bash
+   python -m app.main
+   ```
+
+## Project structure
+
+```
+powerplant-api/
+├── app/
+│   ├── api/production_plan.py   # FastAPI router for /productionplan
+│   ├── core/                    # Settings, logging utilities, error types
+│   ├── models/                  # Pydantic request/response schemas
+│   ├── services/dispatch.py     # Merit-order dispatch algorithm
+├── pyproject.toml               # Project metadata & dependencies (Python 3.13)
+└── requirements.txt             # Sync'd dependency list for pip/CI
+```
+
+- Docstrings and inline comments stay in English as per challenge requirements.
+- Logging is centralized via `app.core.logging.configure_logging`, using the level specified by the `POWERPLANT_LOG_LEVEL` environment variable (defaults to `INFO`).
+
+## API usage
+
+Endpoint: `POST /productionplan`
+
+- Request body must match the schema of `example_payloads/payload*.json`.
+
+Use interactive docs at `http://127.0.0.1:8888/docs` (Swagger UI) and `http://127.0.0.1:8888/redoc` for schema inspection.

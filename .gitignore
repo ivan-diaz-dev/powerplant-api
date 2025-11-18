@@ -1,0 +1,51 @@
+# Entornos virtuales
+venv/
+virtual_envs/
+.env/
+
+# Archivos de configuración de entorno
+*.env
+*.env.*
+
+# Archivos de macOS
+._*
+
+# Archivos de Python compilados
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Archivos de logs
+*.log
+
+# Archivos de salida y temporales
+*.out
+*.tmp
+
+# Configuración de VS Code
+.vscode/
+
+# Archivos de dependencias generados
+pip-wheel-metadata/
+dist/
+build/
+
+# Archivos de sistema
+.DS_Store
+
+# Archivos de test y cobertura
+htmlcov/
+.coverage
+.cache
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+*.coverage
+
+# Archivos de Jupyter
+.ipynb_checkpoints/
+
+# Otros
+*.sqlite3
