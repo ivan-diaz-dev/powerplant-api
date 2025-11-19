@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from enum import Enum
-from typing import List, TypeAlias
+from typing import List
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -22,6 +22,9 @@ class FuelBreakdown(BaseModel):
     co2_euro_ton: float = Field(..., alias="co2(euro/ton)", ge=0)
     wind_percentage: float = Field(..., alias="wind(%)", ge=0, le=100)
 
+    # Allow population by both alias and field name (more flexible for tests)
+    model_config = ConfigDict(populate_by_name=True)
+
 
 class PowerPlant(BaseModel):
     """Descriptor for a single powerplant instance."""
@@ -31,8 +34,6 @@ class PowerPlant(BaseModel):
     efficiency: float = Field(..., gt=0)
     pmin: float = Field(..., ge=0)  # Minimum power output
     pmax: float = Field(..., gt=0)  # Maximum power output
-
-    model_config = ConfigDict(populate_by_name=True)
 
 
 class ProductionPlanRequest(BaseModel):
@@ -50,4 +51,4 @@ class PowerDispatch(BaseModel):
     p: float = Field(..., ge=0)
 
 
-ProductionPlanResponse: TypeAlias = List[PowerDispatch]
+ProductionPlanResponse = List[PowerDispatch]
