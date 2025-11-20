@@ -57,7 +57,7 @@ powerplant-api/
 └── pyproject.toml               # Project metadata & dependency groups
 ```
 
-- Docstrings and inline comments stay in English as per challenge requirements.
+- Docstrings and inline comments stay in English.
 - Logging is centralized via `app.core.logging.configure_logging`, using the level specified by the `POWERPLANT_LOG_LEVEL` environment variable (defaults to `INFO`).
 
 ## API usage
