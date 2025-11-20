@@ -226,7 +226,7 @@ def _iter_feasible_units(spec, remaining, /):
 
 def _to_units(value, /):
     """
-    Convert a floating-point value to scaled integer units by applying rounding and a small 
+    Convert a floating-point value to scaled integer units by applying rounding and a small
     epsilon to mitigate floating-point precision issues.
 
     :param float value: The value in MW.
