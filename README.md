@@ -66,4 +66,4 @@ Endpoint: `POST /productionplan`
 
 - Request body must match the schema of `example_payloads/payload*.json`.
 
-Use interactive docs at `http://127.0.0.1:8888/docs` (Swagger UI) and `http://127.0.0.1:8888/redoc` for schema inspection.
+Use interactive docs at `http://ip:8888/docs` (Swagger UI) and `http://127.0.0.1:8888/redoc` for schema inspection.
