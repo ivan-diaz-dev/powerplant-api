@@ -38,17 +38,23 @@ Calculate how much power each of a multitude of different [powerplants](https://
    python -m app.main
    ```
 
+### Docker
+
+   ```bash
+   docker build -f docker/Dockerfile -t powerplant-api .
+   docker run --rm -p 8888:8888 powerplant-api
+   ```
+
 ## Project structure
 
 ```
 powerplant-api/
 ├── app/
-│   ├── api/production_plan.py   # FastAPI router for /productionplan
+│   ├── api/                     # FastAPI router and endpoints
 │   ├── core/                    # Settings, logging utilities, error types
 │   ├── models/                  # Pydantic request/response schemas
-│   ├── services/dispatch.py     # Merit-order dispatch algorithm
-├── pyproject.toml               # Project metadata & dependencies (Python 3.13)
-└── requirements.txt             # Sync'd dependency list for pip/CI
+│   ├── services/                # Business logic
+└── pyproject.toml               # Project metadata & dependency groups
 ```
 
 - Docstrings and inline comments stay in English as per challenge requirements.
