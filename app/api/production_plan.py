@@ -5,18 +5,26 @@ import logging
 import fastapi
 
 import app.core.errors as errors
-import app.models.payload as payload_models
+import app.models.production_plan.payload as payload_models
+import app.models.production_plan.response as response_models
 import app.services.dispatch as dispatch_service
 
 router = fastapi.APIRouter(prefix="/productionplan", tags=["production-plan"])
 logger = logging.getLogger(__name__)
 
 
-@router.post("", response_model=payload_models.ProductionPlanResponse, status_code=fastapi.status.HTTP_200_OK)
-def calculate_production_plan(
-    payload: payload_models.ProductionPlanRequest,
-) -> payload_models.ProductionPlanResponse:
-    """Compute a production plan given the incoming payload constraints."""
+@router.post("", response_model=response_models.ProductionPlanResponse, status_code=fastapi.status.HTTP_200_OK)
+def calculate_production_plan(payload: payload_models.ProductionPlanRequest):
+    """
+    Compute a production plan given the incoming payload constraints.
+
+    :param payload_models.ProductionPlanRequest payload: Incoming request payload.
+
+    :raises fastapi.HTTPException: If the payload is invalid or the computation fails.
+
+    :return: Computed production plan.
+    :retype: response_models.ProductionPlanResponse
+    """
 
     logger.info(
         "Starting production plan computation",

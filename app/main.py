@@ -3,7 +3,7 @@
 import fastapi
 import uvicorn
 
-import app.api.production_plan as production_plan
+import app.api as api
 import app.core.config as config
 import app.core.logging as logging
 
@@ -12,10 +12,10 @@ def create_application() -> fastapi.FastAPI:
     """Instantiate and configure the FastAPI app."""
 
     settings = config.get_settings()
-    logging.configure_logging(settings.log_level)
+    logging.configure_logging(level=settings.log_level)
 
     app = fastapi.FastAPI(title=settings.app_name, version=settings.app_version)
-    app.include_router(production_plan.router)
+    app.include_router(api.router)
     return app
 
 
