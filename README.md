@@ -42,7 +42,7 @@ Calculate how much power each of a multitude of different [powerplants](https://
 
    ```bash
    docker build -f docker/Dockerfile -t powerplant-api .
-   docker run --rm -p 8888:8888 powerplant-api
+   docker compose up --build
    ```
 
 ## Project structure
